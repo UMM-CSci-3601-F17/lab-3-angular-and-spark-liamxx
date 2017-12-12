@@ -10,6 +10,8 @@ import {Todo} from "./todo";
 
 export class TodoListComponent implements OnInit {
     //These are public so that tests can reference them (.spec.ts)
+    complete : boolean = false;
+    incomplete : boolean = false;
     public todos: Todo[];
     public filteredTodos: Todo[];
 
