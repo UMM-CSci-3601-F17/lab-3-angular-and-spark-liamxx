@@ -59,10 +59,6 @@ export class TodoListComponent implements OnInit {
                 return !searchBody || todo.body.toLowerCase().indexOf(searchBody) !== -1;
             });
         }
-        // Filter with limit numbers
-        if (searchLimit != null) {
-            this.filteredTodos = this.filteredTodos.slice(0,searchLimit);
-        }
         // Filter by status
         if (searchStatus != null) {
             this.filteredTodos = this.filteredTodos.filter(todo => {
@@ -74,6 +70,10 @@ export class TodoListComponent implements OnInit {
             this.filteredTodos = this.filteredTodos.filter(todo => {
                 return !searchId || todo._id == searchId;
             });
+        }
+        // Filter with limit numbers
+        if (searchLimit != null) {
+            this.filteredTodos = this.filteredTodos.slice(0,searchLimit);
         }
 
         return this.filteredTodos;
