@@ -16,15 +16,27 @@
         <button style="margin-left:5px; margin-right:5px; width:140px;" (click)="todoStatus = false"> incomplete </button>
 
     </li>
-    <li id="title" class="list-group-item list-group-item-info">Todo Owner</li>
+    <li id="title" class="list-group-item list-group-item-info" style="font-weight:bold;">Todos:
+        <span style="float:right;">
+            <input #input type="text" placeholder="Search todo by ID" (input)="todoId = $event.target.value">
+        </span>
+    </li>
 </ul>
 <ul class="list-group" *ngIf="todos; else todosError">
-    <li id="todos" *ngFor="let todo of this.filterTodos(todoOwner, todoCategory, todoBodyText, todoLimit, todoStatus)" class="list-group-item">
+    <li id="todos" *ngFor="let todo of this.filterTodos(todoOwner, todoCategory, todoBodyText, todoLimit, todoStatus, todoId)" class="list-group-item">
         <span style="font-weight: bold;">Owner: [ </span>
         {{ todo.owner }}
-        <span style="font-weight: bold;"> ]<br/>Category: [ </span>
+        <span style="font-weight: bold;"> ]
+            <span style="float:right;">
+                <p>ID</p>
+            </span>
+        <br/>Category: [ </span>
         {{ todo.category }}
-        <span style="font-weight: bold;"> ]<br/>Complete? [ </span>
+        <span style="font-weight: bold;"> ]
+            <span style="float:right;font-weight:normal;">
+                <p > {{todo._id}} </p>
+            </span>
+            <br/>Complete? [ </span>
         {{ todo.status }}
         <span style="font-weight: bold;"> ]<br/>Body: [ </span>
         {{todo.body}}

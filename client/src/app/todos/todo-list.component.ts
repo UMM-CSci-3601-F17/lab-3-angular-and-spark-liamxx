@@ -15,6 +15,7 @@ export class TodoListComponent implements OnInit {
     todoStatus : boolean;
     todoBodyText : string;
     todoLimit : number;
+    todoId : string;
     public todos: Todo[];
     public filteredTodos: Todo[];
 
@@ -31,7 +32,8 @@ export class TodoListComponent implements OnInit {
                        searchCategory: string,
                        searchBody: string,
                        searchLimit: number,
-                       searchStatus: boolean): Todo[] {
+                       searchStatus: boolean,
+                       searchId: string): Todo[] {
 
         this.filteredTodos = this.todos;
 
@@ -66,6 +68,12 @@ export class TodoListComponent implements OnInit {
             this.filteredTodos = this.filteredTodos.filter(todo => {
                 return todo.status == searchStatus;
             })
+        }
+        // Filter by Id
+        if (searchId != null) {
+            this.filteredTodos = this.filteredTodos.filter(todo => {
+                return !searchId || todo._id == searchId;
+            });
         }
 
         return this.filteredTodos;
