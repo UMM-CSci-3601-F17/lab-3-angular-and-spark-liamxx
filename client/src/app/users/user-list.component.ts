@@ -10,6 +10,8 @@ import {User} from "./user";
 
 export class UserListComponent implements OnInit {
     //These are public so that tests can reference them (.spec.ts)
+    userName: string;
+    userAge: number;
     public users: User[];
     public filteredUsers: User[];
 
