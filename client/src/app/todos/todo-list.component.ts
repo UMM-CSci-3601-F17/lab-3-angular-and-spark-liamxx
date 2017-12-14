@@ -72,6 +72,7 @@ export class TodoListComponent implements OnInit {
             });
         }
         // Filter with limit numbers
+        // I have to put this at the end because otherwise it will not give the correct number of terms that display
         if (searchLimit != null) {
             this.filteredTodos = this.filteredTodos.slice(0,searchLimit);
         }
@@ -80,7 +81,7 @@ export class TodoListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        //Get Users returns an Observable, basically a "promise" that
+        //Get Todos returns an Observable, basically a "promise" that
         //we will get the data from the server.
         //
         //Subscribe waits until the data is fully downloaded, then
